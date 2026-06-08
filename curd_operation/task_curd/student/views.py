@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import reg
 
 def home(request):
@@ -39,8 +39,19 @@ def viewstudent(request):
     return render(request,"viewstudent.html",{'data':data})
 
 
+def deletestudent(request,id):
+    reg.objects.filter(id=id).delete()
+    
+    return redirect("/viewstudent")
+    
+# def deletestudent(request):
+#     id=request.GET["id"]
+#     reg.objects.filter(id).delete() 
+#     return redirect("/viewstudent")
+
+
 def updatestudent(request):
     id=request.GET["id"]
-    data=student.object.filter(id=id)
+    data=reg.object.filter(id=id).update()
     
     return render(request,"updatestudent.html")
