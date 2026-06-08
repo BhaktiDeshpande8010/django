@@ -31,3 +31,10 @@ def saveform(request):
 
     else:
         return HttpResponse("Failed")
+    
+    
+
+def viewstudent(request):
+    data=reg.objects.all().order_by('-id')
+    return render(request,"viewstudent.html",{'data':data})
+

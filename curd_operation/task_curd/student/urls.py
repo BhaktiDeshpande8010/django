@@ -9,5 +9,5 @@ urlpatterns = [
     path('about',views.about),
     path('reg/',views.registration),
     path('saveform/', views.saveform),
-    
+    path('viewstudent/',views.viewstudent)    
 ]
