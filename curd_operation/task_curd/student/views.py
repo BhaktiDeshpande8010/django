@@ -38,3 +38,9 @@ def viewstudent(request):
     data=reg.objects.all().order_by('-id')
     return render(request,"viewstudent.html",{'data':data})
 
+
+def updatestudent(request):
+    id=request.GET["id"]
+    data=student.object.filter(id=id)
+    
+    return render(request,"updatestudent.html")
