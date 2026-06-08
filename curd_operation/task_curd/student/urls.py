@@ -14,6 +14,6 @@ urlpatterns = [
     # path('deletestudent',views.deletestudent),
     path('deletestudent/<int:id>',views.deletestudent),
     path('updatestudent/<int:id>',views.updatestudent),
-
+    path('profileupdate',views.profileupdate)
     
 ]

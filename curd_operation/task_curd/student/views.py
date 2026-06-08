@@ -55,3 +55,7 @@ def updatestudent(request):
     data=reg.object.filter(id=id).update()
     
     return render(request,"updatestudent.html")
+
+
+def profileupdate(request):
+    pass
