@@ -50,12 +50,37 @@ def deletestudent(request,id):
 #     return redirect("/viewstudent")
 
 
-def updatestudent(request):
-    id=request.GET["id"]
-    data=reg.object.filter(id=id).update()
+# def updatestudent(request, id):
+#     id=request.GET["id"]
+#     data=reg.objects.filter(id=id).update()
     
-    return render(request,"updatestudent.html")
+#     return render(request,"updatestudent.html")
+
+def updatestudent(request, id):
+    data = reg.objects.get(id=id)
+
+    return render(request, "updatestudent.html", {"i": data})          #chagpt code
 
 
 def profileupdate(request):
-    pass
+    if request.method=="POST":
+        id=request.POST["id"]
+        n=request.POST.get("name")
+        em=request.POST.get("email")
+        ps=request.POST.get("password")
+        cn=request.POST.get("contact")
+        ad=request.POST.get("address")
+
+        r=reg.objects.filter(id=id).update(
+            name=n,
+            email=em,
+            password=ps,
+            contact=cn,
+            address=ad
+        )
+
+        # return HttpResponse("Profile Updated successfully")
+        return redirect("viewstudent")
+
+    else:
+        return HttpResponse("Failed")

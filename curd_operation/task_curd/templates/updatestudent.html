@@ -15,17 +15,17 @@
 
     <form action="/profileupdate/" method="POST">
         {% csrf_token %}
-        <input type="hidden" name="id" placeholder="Enter Your Name">
+        <input type="hidden" name="id" placeholder="Enter Your Name" value="{{i.id}} ">
 
-        <input type="text" name="name" placeholder="Enter Your Name">
+        <input type="text" name="name" placeholder="Enter Your Name" value="{{i.name}}">
         <br><br>
-        <input type="email" name="email" placeholder="Enter Your Email">
+        <input type="email" name="email" placeholder="Enter Your Email" value="{{i.email}}">
         <br><br>
-        <input type="password" name="password" placeholder="Enter Your Password">
+        <input type="password" name="password" placeholder="Enter Your Password" value="{{i.password}}">
         <br><br>
-        <input type="tel" name="contact" placeholder="Enter Your Contact">
+        <input type="tel" name="contact" placeholder="Enter Your Contact" value="{{i.contact}}">
         <br><br>
-        <input type="text" name="address" placeholder="Enter Your City">
+        <input type="text" name="address" placeholder="Enter Your City" value="{{i.address}}">
         <br><br>
         <input class="btn btn-primary" type="submit">
     </form>
