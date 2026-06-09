@@ -16,5 +16,5 @@ urlpatterns = [
     path('logincheck/', views.logincheck, name='logincheck'),
 
     path('dashboard/', views.dashboard),
-    path('logout/', views.logout),
+    path('logout',views.logout),
 ]
