@@ -83,3 +83,31 @@ def profileupdate(request):
         return redirect("viewstudent")
     else:
         return HttpResponse("Failed")
+    
+  
+  
+def login(request):  
+    return render(request,"login.html")
+
+
+def logincheck(request):
+    if request.method == "POST":
+        em = request.POST["email"]
+        ps = request.POST["password"]
+
+        # FIXED: proper check
+        if reg.objects.filter(email=em, password=ps).exists():
+            return redirect("/dashboard")
+        else:
+            return redirect("/login")
+
+    return HttpResponse("failed")
+
+
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
+def logout(request):
+    return redirect("/login")
+    
