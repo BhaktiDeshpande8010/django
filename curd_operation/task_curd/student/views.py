@@ -81,6 +81,5 @@ def profileupdate(request):
 
         # return HttpResponse("Profile Updated successfully")
         return redirect("viewstudent")
-
     else:
         return HttpResponse("Failed")
