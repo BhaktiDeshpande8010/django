@@ -133,14 +133,15 @@ def logout(request):
     return redirect("/login")
     
 
-# #Cookie  : small pieace if information or data
-# def add_cookie(request):
-#     res=HttpResponse("Cookies_SET")
-#     res.set_cookie("name","abcd")
-#     return res
+#Cookie  : small pieace if information or data
+def add_cookie(request):
+    res=HttpResponse("Cookies_SET")
+    res.set_cookie("name","abcd")
+    return res
 
-# def view_cokkie(request):
-#     pass
+def view_cokkie(request):
+    n=request.COOKIES["name"]
+    return HttpResponse("Name %s"%n)
 
 
 def file(request):

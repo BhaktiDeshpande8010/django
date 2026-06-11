@@ -18,8 +18,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('logout',views.logout),
     
-    # path("add_cookie",views.add_cookie),
-    # path("view_cookie",views.view_cookie),
+    path("add_cookie",views.add_cookie),
+    path("view_cookie",views.view_cokkie),
     
     path('file',views.file),
     path('filesave/',views.filesave),
