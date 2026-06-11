@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import reg
+from .models import reg,emp
 
 def home(request):
     return render(request,"home.html")
@@ -90,13 +90,28 @@ def login(request):
     return render(request,"login.html")
 
 
+# def logincheck(request):
+#     if request.method == "POST":
+#         em = request.POST["email"]
+#         ps = request.POST["password"]
+
+#         # FIXED: proper check
+#         if reg.objects.filter(email=em, password=ps).exists():
+#             return redirect("/dashboard")
+#         else:
+#             return redirect("/login")
+
+#     return HttpResponse("failed")
 def logincheck(request):
     if request.method == "POST":
         em = request.POST["email"]
         ps = request.POST["password"]
 
         # FIXED: proper check
-        if reg.objects.filter(email=em, password=ps).exists():
+        data= reg.objects.filter(email=em, password=ps)
+        
+        if data:
+            request.session["username"]=em         #session start
             return redirect("/dashboard")
         else:
             return redirect("/login")
@@ -105,9 +120,42 @@ def logincheck(request):
 
 
 def dashboard(request):
-    return render(request, "dashboard.html")
-
+    if request.session.get("username") is not None:
+        email=request.session.get("username")
+        data=reg.object.filter(email=email)
+        
+        return render(request, "dashboard.html",{'data':data})
+    else:
+        return redirect("/login")
 
 def logout(request):
+    del request.session["username"]          #session end
     return redirect("/login")
     
+
+# #Cookie  : small pieace if information or data
+# def add_cookie(request):
+#     res=HttpResponse("Cookies_SET")
+#     res.set_cookie("name","abcd")
+#     return res
+
+# def view_cokkie(request):
+#     pass
+
+
+def file(request):
+    return render(request, 'file.html')
+
+
+def filesave(request):
+    if request.method=="POST":
+        em=request.POST["email"]
+        photo = request.FILES.get("photo")
+        
+        e=emp(email=em,photo=photo)
+        e.save()
+        
+        return HttpResponse("Uploaded successfully")
+    
+    else:
+        return HttpResponse("Failed")
