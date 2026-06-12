@@ -23,3 +23,12 @@ class reg(models.Model):
 class emp(models.Model):
     email = models.CharField(max_length=30)
     photo = models.FileField(upload_to="images/")
+    
+    
+    
+class person(models.Model):
+    fullname=models.CharField(max_length=40)
+    email=models.CharField(max_length=30)
+    password=models.CharField(max_length=15)
+    contact=models.CharField(max_length=40)
+    address=models.CharField(max_length=100)
