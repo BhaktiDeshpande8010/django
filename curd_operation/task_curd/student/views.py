@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from .models import reg,emp
+from .form import personform
 
 def home(request):
     return render(request,"home.html")
@@ -160,3 +161,9 @@ def filesave(request):
     
     else:
         return HttpResponse("Failed")
+    
+    
+    
+def form(request):
+    p=personform()
+    return render(request,"form.html",{'form':p})

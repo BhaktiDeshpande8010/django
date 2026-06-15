@@ -23,4 +23,6 @@ urlpatterns = [
     
     path('file',views.file),
     path('filesave/',views.filesave),
+    
+    path('form',views.form,name="form"), 
 ]
