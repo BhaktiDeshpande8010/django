@@ -32,3 +32,7 @@ class person(models.Model):
     password=models.CharField(max_length=15)
     contact=models.CharField(max_length=40)
     address=models.CharField(max_length=100)
+    
+    
+    
+
