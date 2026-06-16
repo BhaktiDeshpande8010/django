@@ -124,3 +124,13 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+# DEFAULT_AUTO_FIELD = 'django.db.models.BIGAutoFeild
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGES={
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning'
+}
